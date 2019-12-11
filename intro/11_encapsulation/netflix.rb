@@ -15,22 +15,32 @@ class NetflixAccount
     @recently_watched = []
   end
 
+  public
   def add_to_my_list(movie)
-    # Your code goes here
+    @my_list.push(movie)
   end
 
+  private
+  def check_movie(movie)
+    return movie.class == Movie
+  end
+
+  public
   def remove_from_my_list(movie)
-    # Your code goes here
+    if check_movie(movie) and @my_list.include? movie
+      @my_list.delete(movie)
+    end
   end
 
+  public
   def watch(movie)
-    # Your code goes here
+    @recently_watched.push(movie)
   end
 end
 
 movies = [
-  Movie.new("Seven Samurai"), 
-  Movie.new("Wall Street"), 
+  Movie.new("Seven Samurai"),
+  Movie.new("Wall Street"),
   Movie.new("Big Hero 6")
 ]
 

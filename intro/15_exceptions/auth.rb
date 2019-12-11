@@ -19,12 +19,14 @@ end
 class Application
   def initialize
     @logger = Logger.new(STDOUT)
-    @users = {}
+    @users = []
     @is_authenticated = false
   end
 
   def load_users(filename)
-    # Your code goes here
+    CSV.read(filename).each do |line|
+      @users.push(User.new(line[0], line[1]))
+    end
   end
 
   def login
@@ -41,5 +43,5 @@ class Application
 end
 
 application = Application.new
-application.load_users("users.csv")
+application.load_users("/Users/stephaniechallita/workspace/ruby-playground/ruby/intro/15_exceptions/users.csv")
 application.run

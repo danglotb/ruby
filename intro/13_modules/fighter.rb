@@ -13,6 +13,14 @@ module Logging
 end
 
 class Fighter
+  attr_reader :name
+  def initialize(name)
+    @name = name
+  end
+  include WingChunMixin
+  include BoxingMixin
+  include FencingMixin
+  include JeetKuneDoMixin
   # Your code goes here
 end
 
@@ -21,3 +29,5 @@ fighter.uppercut
 fighter.block
 fighter.riposte
 fighter.straight_kick
+
+puts fighter.name
